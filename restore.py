@@ -10,15 +10,6 @@ db.execute("DELETE FROM ItemTable;")
 db.commit()
 
 
-# 在每个字节后面加上\x00
-def wtf(f):
-    o = ""
-    for x in f:
-        o = o + x
-        o = o + "\x00"
-    return bytes(o, encoding="ASCII")
-
-
 files = []  # 所有 .rpgsave 文件
 for x in os.listdir("."):
     if x.split(".")[-1] == "rpgsave":
