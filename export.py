@@ -1,8 +1,11 @@
-#!/data/data/com.termux/files/usr/bin/python
 import os
 import shutil
 import sqlite3
 import sys
+
+if not len(sys.argv) > 1:
+    print("Invalid Argument.")
+    sys.exit(0)
 
 db_path = sys.argv[1]
 if not os.path.isfile(db_path):
@@ -29,5 +32,6 @@ for x in keys:
     value = value.decode("utf-16")
     with open(f"{x}.rpgsave", "w+") as f:
         f.write(value)
+    print(f"{x}.rpgsave exported.")
 
 db.close()
